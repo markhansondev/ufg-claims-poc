@@ -1,0 +1,12 @@
+C:\Users\zbehrensmeyer\source\repos\Poc.Claims\Poc.Claims\bin\Debug\net5.0\Poc.Claims.deps.json
+C:\Users\zbehrensmeyer\source\repos\Poc.Claims\Poc.Claims\bin\Debug\net5.0\Poc.Claims.dll
+C:\Users\zbehrensmeyer\source\repos\Poc.Claims\Poc.Claims\bin\Debug\net5.0\ref\Poc.Claims.dll
+C:\Users\zbehrensmeyer\source\repos\Poc.Claims\Poc.Claims\bin\Debug\net5.0\Poc.Claims.pdb
+C:\Users\zbehrensmeyer\source\repos\Poc.Claims\Poc.Claims\obj\Debug\net5.0\Poc.Claims.csproj.AssemblyReference.cache
+C:\Users\zbehrensmeyer\source\repos\Poc.Claims\Poc.Claims\obj\Debug\net5.0\Poc.Claims.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\zbehrensmeyer\source\repos\Poc.Claims\Poc.Claims\obj\Debug\net5.0\Poc.Claims.AssemblyInfoInputs.cache
+C:\Users\zbehrensmeyer\source\repos\Poc.Claims\Poc.Claims\obj\Debug\net5.0\Poc.Claims.AssemblyInfo.cs
+C:\Users\zbehrensmeyer\source\repos\Poc.Claims\Poc.Claims\obj\Debug\net5.0\Poc.Claims.csproj.CoreCompileInputs.cache
+C:\Users\zbehrensmeyer\source\repos\Poc.Claims\Poc.Claims\obj\Debug\net5.0\Poc.Claims.dll
+C:\Users\zbehrensmeyer\source\repos\Poc.Claims\Poc.Claims\obj\Debug\net5.0\ref\Poc.Claims.dll
+C:\Users\zbehrensmeyer\source\repos\Poc.Claims\Poc.Claims\obj\Debug\net5.0\Poc.Claims.pdb
