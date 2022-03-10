@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "hpMG3j1mUAqtKCQ0JkkTM97AY22c60jkmclpntXezOoez8qtAYpb2dbsJkYvYRSpgpKBFpytVarESByFU0djDA==",
+  "dgSpecHash": "zML78/UmoFAh6Yol/kgOgydXCEdTNbtjUrgHkzk15qM7MZ6xGZYIxw15QbnV3zuF4NyjHD7DmlgSJf8n2JWASQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\zbehrensmeyer\\source\\repos\\Poc.Claims\\Poc.Claims\\Poc.Claims.csproj",
+  "projectFilePath": "C:\\UFG\\ClaimsPoc\\Poc.Claims\\Poc.Claims\\Poc.Claims.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
