@@ -29,9 +29,9 @@ namespace Poc.Claims.Specs
         }
 
         [Given(@"the FNOL line liability amount \$(.*)")]
-        public void GivenTheFNOLLineLiabilityAmount(int p0)
+        public void GivenTheFNOLLineLiabilityAmount(decimal fnolLineLiabilityAmount)
         {
-            ScenarioContext.Current.Pending();
+            _reserveContext.Fnol.FnolLineLiabilityAmount = fnolLineLiabilityAmount; 
         }
 
         [When(@"the claim is created from an FNOL")]
@@ -41,7 +41,7 @@ namespace Poc.Claims.Specs
         }
 
         [Then(@"the intial reserve is set to \$(.*)")]
-        public void ThenTheIntialReserveIsSetTo(int p0)
+        public void ThenTheIntialReserveIsSetTo(decimal p0)
         {
             ScenarioContext.Current.Pending();
         }

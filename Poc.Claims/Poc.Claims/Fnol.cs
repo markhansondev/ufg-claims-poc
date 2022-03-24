@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Poc.Claims
+﻿namespace Poc.Claims
 {
-    class Fnol
+    public class Fnol
     {
+        public bool IsReadyToBeCompleted { get; set; }
+        public decimal FnolLineLiabilityAmount { get; set; }
     }
 }
