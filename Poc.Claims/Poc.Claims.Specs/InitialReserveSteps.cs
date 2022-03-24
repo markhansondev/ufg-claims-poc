@@ -1,5 +1,6 @@
 ﻿using System;
 using TechTalk.SpecFlow;
+using Shouldly;
 
 namespace Poc.Claims.Specs
 {
@@ -10,7 +11,7 @@ namespace Poc.Claims.Specs
         private class ReserveContext
         {
             public Fnol Fnol { get; set; }
-
+            public Claim Claim { get; set; }
         }
 
         private ReserveContext _reserveContext;
@@ -37,13 +38,14 @@ namespace Poc.Claims.Specs
         [When(@"the claim is created from an FNOL")]
         public void WhenTheClaimIsCreatedFromAnFNOL()
         {
-            ScenarioContext.Current.Pending();
+            _reserveContext.Claim = _reserveContext.Fnol.CreateClaim();
         }
 
-        [Then(@"the intial reserve is set to \$(.*)")]
-        public void ThenTheIntialReserveIsSetTo(decimal p0)
+        [Then(@"the initial reserve amount is set to \$(.*)")]
+        public void ThenTheInitialReserveAmountIsSetTo(decimal initialReserveAmount)
         {
-            ScenarioContext.Current.Pending();
+            _reserveContext.Claim.ShouldNotBeNull();
+            _reserveContext.Claim.ReserveAmount.ShouldBe(initialReserveAmount);
         }
     }
 }

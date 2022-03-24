@@ -5,4 +5,4 @@ Scenario: Set an initial reserve amount because UFG needs to set money aside to 
 	Given an FNOL is ready to be completed
 	And the FNOL line liability amount $1000.00 
 	When the claim is created from an FNOL
-	Then the intial reserve is set to $1000.00
+	Then the initial reserve amount is set to $1000.00

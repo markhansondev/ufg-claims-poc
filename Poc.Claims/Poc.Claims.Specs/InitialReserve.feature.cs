@@ -100,7 +100,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.When("the claim is created from an FNOL", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 8
- testRunner.Then("the intial reserve is set to $1000.00", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("the initial reserve amount is set to $1000.00", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
