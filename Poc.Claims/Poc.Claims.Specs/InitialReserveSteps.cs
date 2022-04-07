@@ -41,7 +41,7 @@ namespace Poc.Claims.Specs
             _reserveContext.Claim = _reserveContext.Fnol.CreateClaim();
         }
 
-        [Then(@"the initial reserve amount is set to \$(.*)")]
+        [Then(@"the line initial reserve amount is set to \$(.*)")]
         public void ThenTheInitialReserveAmountIsSetTo(decimal initialReserveAmount)
         {
             _reserveContext.Claim.ShouldNotBeNull();
