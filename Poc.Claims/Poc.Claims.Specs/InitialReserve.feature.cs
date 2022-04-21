@@ -131,7 +131,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("an existing claim has an initial line reserve amount", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 13
- testRunner.And("we are specifying a new line has an initial reserve amount $2000.00", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("we are specifying a new line that has an initial reserve amount $2000.00", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 14
  testRunner.When("the new line is added to the claim", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");

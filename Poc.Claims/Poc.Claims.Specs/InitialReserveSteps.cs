@@ -47,5 +47,31 @@ namespace Poc.Claims.Specs
             _reserveContext.Claim.ShouldNotBeNull();
             _reserveContext.Claim.ReserveAmount.ShouldBe(initialReserveAmount);
         }
+
+        [Given(@"an existing claim has an initial line reserve amount")]
+        public void GivenAnExistingClaimHasAnInitialLineReserveAmount()
+        {
+            _reserveContext.Claim = new Claim();
+            _reserveContext.Claim.AddLine();
+        }
+
+        [Given(@"we are specifying a new line that has an initial reserve amount \$(.*)")]
+        public void GivenWeAreSpecifyingANewLineThatHasAnInitialReserveAmount(Decimal p0)
+        {
+            ScenarioContext.Current.Pending();
+        }
+
+        [When(@"the new line is added to the claim")]
+        public void WhenTheNewLineIsAddedToTheClaim()
+        {
+            ScenarioContext.Current.Pending();
+        }
+
+        [Then(@"the initial reserve amount is set to \$(.*) on the new line")]
+        public void ThenTheInitialReserveAmountIsSetToOnTheNewLine(Decimal p0)
+        {
+            ScenarioContext.Current.Pending();
+        }
+
     }
 }

@@ -10,6 +10,6 @@ Scenario: Set an initial line reserve amount because UFG needs to set money asid
 
 Scenario: Set an initial line reserve amount on a new line on an existing claim because UFG needs to set additional money aside to payout
 	Given an existing claim has an initial line reserve amount
-	And we are specifying a new line has an initial reserve amount $2000.00 
+	And we are specifying a new line that has an initial reserve amount $2000.00 
 	When the new line is added to the claim
 	Then the initial reserve amount is set to $2000.00 on the new line
