@@ -1,16 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Poc.Claims
 {
     public class Claim
     {
-        public decimal ReserveAmount { get; set; }
-        public IList<Line> Lines { get; set; } = new List<Line> { new () };
+        public IEnumerable<Line> Lines => _lines;
+        private readonly IList<Line> _lines;
 
-        public void AddLine()
+        public Claim(decimal initialReserveAmount)
         {
-            Lines.Add(new Line());
+            _lines = new List<Line> { new(initialReserveAmount) };
+        }
+
+        public void AddLine(decimal initialLineAmount)
+        {
+            _lines.Add(new Line(initialLineAmount));
         }
     }
 }

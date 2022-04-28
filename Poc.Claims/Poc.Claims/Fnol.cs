@@ -7,7 +7,7 @@
 
         public Claim CreateClaim()
         {
-            return new Claim() { ReserveAmount = FnolLineLiabilityAmount };
+            return new Claim(FnolLineLiabilityAmount);
         }
     }
 }

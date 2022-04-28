@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using TechTalk.SpecFlow;
 using Shouldly;
 
@@ -29,7 +30,7 @@ namespace Poc.Claims.Specs
             _reserveContext.Fnol.IsReadyToBeCompleted = true;
         }
 
-        [Given(@"the FNOL line liability amount \$(.*)")]
+        [Given(@"the FNOL line liability amount is \$(.*)")]
         public void GivenTheFNOLLineLiabilityAmount(decimal fnolLineLiabilityAmount)
         {
             _reserveContext.Fnol.FnolLineLiabilityAmount = fnolLineLiabilityAmount; 
@@ -45,32 +46,26 @@ namespace Poc.Claims.Specs
         public void ThenTheInitialReserveAmountIsSetTo(decimal initialReserveAmount)
         {
             _reserveContext.Claim.ShouldNotBeNull();
-            _reserveContext.Claim.ReserveAmount.ShouldBe(initialReserveAmount);
+            _reserveContext.Claim.Lines.First().ReserveAmount.ShouldBe(initialReserveAmount);
         }
 
         [Given(@"an existing claim has an initial line reserve amount")]
         public void GivenAnExistingClaimHasAnInitialLineReserveAmount()
         {
-            _reserveContext.Claim = new Claim();
-            _reserveContext.Claim.AddLine();
+            const decimal initialReserveAmountForInitialLine = 1000;
+            _reserveContext.Claim = new Claim(initialReserveAmountForInitialLine);
         }
 
-        [Given(@"we are specifying a new line that has an initial reserve amount \$(.*)")]
-        public void GivenWeAreSpecifyingANewLineThatHasAnInitialReserveAmount(Decimal p0)
+        [When(@"a new line is added to the claim with an initial reserve amount of \$(.*)")]
+        public void WhenANewLineIsAddedToTheClaimWithAnInitialReserveAmountOf(Decimal initialLineAmount)
         {
-            ScenarioContext.Current.Pending();
-        }
-
-        [When(@"the new line is added to the claim")]
-        public void WhenTheNewLineIsAddedToTheClaim()
-        {
-            ScenarioContext.Current.Pending();
+            _reserveContext.Claim.AddLine(initialLineAmount);
         }
 
         [Then(@"the initial reserve amount is set to \$(.*) on the new line")]
-        public void ThenTheInitialReserveAmountIsSetToOnTheNewLine(Decimal p0)
+        public void ThenTheInitialReserveAmountIsSetToOnTheNewLine(Decimal reserveAmount)
         {
-            ScenarioContext.Current.Pending();
+            _reserveContext.Claim.Lines.LastOrDefault()?.ReserveAmount.ShouldBe(reserveAmount);
         }
 
     }

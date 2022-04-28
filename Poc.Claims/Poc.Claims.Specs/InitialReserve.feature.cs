@@ -96,7 +96,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("an FNOL is ready to be completed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 7
- testRunner.And("the FNOL line liability amount $1000.00", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("the FNOL line liability amount is $1000.00", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 8
  testRunner.When("the claim is created from an FNOL", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
@@ -131,12 +131,9 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("an existing claim has an initial line reserve amount", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 13
- testRunner.And("we are specifying a new line that has an initial reserve amount $2000.00", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.When("a new line is added to the claim with an initial reserve amount of $2000.00", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 14
- testRunner.When("the new line is added to the claim", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 15
  testRunner.Then("the initial reserve amount is set to $2000.00 on the new line", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
