@@ -57,15 +57,27 @@ namespace Poc.Claims.Specs
         }
 
         [When(@"a new line is added to the claim with an initial reserve amount of \$(.*)")]
-        public void WhenANewLineIsAddedToTheClaimWithAnInitialReserveAmountOf(Decimal initialLineAmount)
+        public void WhenANewLineIsAddedToTheClaimWithAnInitialReserveAmountOf(decimal initialLineAmount)
         {
             _reserveContext.Claim.AddLine(initialLineAmount);
         }
 
         [Then(@"the initial reserve amount is set to \$(.*) on the new line")]
-        public void ThenTheInitialReserveAmountIsSetToOnTheNewLine(Decimal reserveAmount)
+        public void ThenTheInitialReserveAmountIsSetToOnTheNewLine(decimal reserveAmount)
         {
             _reserveContext.Claim.Lines.LastOrDefault()?.ReserveAmount.ShouldBe(reserveAmount);
+        }
+
+        [Given(@"an existing claim has an initial line reserve amount of \$(.*)")]
+        public void GivenAnExistingClaimHasAnInitialLineReserveAmountOf(decimal initialReserveAmount)
+        {
+            _reserveContext.Claim = new Claim(initialReserveAmount);
+        }
+
+        [Then(@"the total reserve amount is set to \$(.*) on the new claim")]
+        public void ThenTheTotalReserveAmountIsSetToOnTheNewClaim(decimal totalReserveAmount)
+        {
+            _reserveContext.Claim.TotalReserveAmount.ShouldBe(totalReserveAmount);
         }
 
     }
