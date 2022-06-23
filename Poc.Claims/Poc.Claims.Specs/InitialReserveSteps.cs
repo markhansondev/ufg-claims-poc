@@ -15,6 +15,7 @@ namespace Poc.Claims.Specs
             public Claim Claim { get; set; }
         }
 
+
         private ReserveContext _reserveContext;
 
         [BeforeScenario]
@@ -80,5 +81,35 @@ namespace Poc.Claims.Specs
             _reserveContext.Claim.TotalReserveAmount.ShouldBe(totalReserveAmount);
         }
 
+        //6/23
+        [Given(@"an exisiting claim that has (.*) lines each with a reserve amount of \$(.*)")]
+        public void GivenAnExisitingClaimThatHasLinesEachWithAReserveAmountOf(int lineCount, int lineReserveAmount)
+        {
+            _reserveContext.Claim = new Claim(lineReserveAmount);
+
+            for (int i = 1; i <= lineCount; i++)
+            {
+                _reserveContext.Claim.AddLine(lineReserveAmount);
+            }
+        }
+
+        [When(@"one of the lines is closed")]
+        public void WhenOneOfTheLinesIsClosed()
+        {
+            //TODO: Discussion on what is "missing" to move forward
+            ScenarioContext.Current.Pending();
+        }
+
+        [Then(@"the total reserve amount is \$(.*)")]
+        public void ThenTheTotalReserveAmountIs(int p0)
+        {
+            ScenarioContext.Current.Pending();
+        }
+
+        [Then(@"the closed line has a reserve amount of \$(.*)")]
+        public void ThenTheClosedLineHasAReserveAmountOf(int p0)
+        {
+            ScenarioContext.Current.Pending();
+        }
     }
 }

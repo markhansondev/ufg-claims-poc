@@ -19,5 +19,11 @@ namespace Poc.Claims
         {
             _lines.Add(new Line(initialLineAmount));
         }
+
+        //public void CloseLine(Line line)
+        //{
+            ////We are zeroing out the reserve amount: may be additional steps to closing a line
+            ////line.ReserveAmount = 0;
+        //}
     }
 }

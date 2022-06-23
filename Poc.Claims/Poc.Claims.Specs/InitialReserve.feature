@@ -22,5 +22,4 @@ Scenario: Close a single line on a claim that has multiple lines
 	Given an exisiting claim that has 5 lines each with a reserve amount of $1000
 	When one of the lines is closed
 	Then the total reserve amount is $4000 
-	And the closed line has a reserve amount of $0 
-	And the status of closed
+	And the closed line has a reserve amount of $0
