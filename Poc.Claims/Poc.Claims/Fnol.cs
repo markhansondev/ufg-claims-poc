@@ -5,9 +5,9 @@
         public bool IsReadyToBeCompleted { get; set; }
         public decimal FnolLineLiabilityAmount { get; set; }
 
-        public Claim CreateClaim()
+        public Claim CreateClaim(string lineType)
         {
-            return new Claim(FnolLineLiabilityAmount);
+            return new Claim(FnolLineLiabilityAmount, lineType);
         }
     }
 }

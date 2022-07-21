@@ -12,7 +12,7 @@ Scenario: Set an initial line reserve amount on a new line on an existing claim 
 	When a new line is added to the claim with an initial reserve amount of $2000.00
 	Then the initial reserve amount is set to $2000.00 on the new line
 
-Scenario: The total claim reserve amount is the sum of  the line reserve amounts
+Scenario: The total claim reserve amount is the sum of the line reserve amounts
 	Given an existing claim has an initial line reserve amount of $1000.00
 	When a new line is added to the claim with an initial reserve amount of $2000.00
 	Then the total reserve amount is set to $3000.00 on the new claim

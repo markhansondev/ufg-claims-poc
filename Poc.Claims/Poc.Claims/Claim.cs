@@ -10,14 +10,14 @@ namespace Poc.Claims
 
         private readonly IList<Line> _lines;
 
-        public Claim(decimal initialReserveAmount)
+        public Claim(decimal initialReserveAmount, string lineType)
         {
-            _lines = new List<Line> { new(initialReserveAmount) };
+            _lines = new List<Line> { new(initialReserveAmount, lineType) };
         }
 
-        public void AddLine(decimal initialLineAmount)
+        public void AddLine(decimal initialLineAmount, string lineType)
         {
-            _lines.Add(new Line(initialLineAmount));
+            _lines.Add(new Line(initialLineAmount, lineType));
         }
 
         //public void CloseLine(Line line)

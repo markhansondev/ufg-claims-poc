@@ -141,12 +141,12 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("The total claim reserve amount is the sum of  the line reserve amounts")]
+        [NUnit.Framework.DescriptionAttribute("The total claim reserve amount is the sum of the line reserve amounts")]
         public void TheTotalClaimReserveAmountIsTheSumOfTheLineReserveAmounts()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The total claim reserve amount is the sum of  the line reserve amounts", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The total claim reserve amount is the sum of the line reserve amounts", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 15
 this.ScenarioInitialize(scenarioInfo);
 #line hidden

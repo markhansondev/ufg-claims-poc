@@ -40,7 +40,8 @@ namespace Poc.Claims.Specs
         [When(@"the claim is created from an FNOL")]
         public void WhenTheClaimIsCreatedFromAnFNOL()
         {
-            _reserveContext.Claim = _reserveContext.Fnol.CreateClaim();
+            var initialLineType = "med";
+            _reserveContext.Claim = _reserveContext.Fnol.CreateClaim(initialLineType);
         }
 
         [Then(@"the line initial reserve amount is set to \$(.*)")]
@@ -54,13 +55,15 @@ namespace Poc.Claims.Specs
         public void GivenAnExistingClaimHasAnInitialLineReserveAmount()
         {
             const decimal initialReserveAmountForInitialLine = 1000;
-            _reserveContext.Claim = new Claim(initialReserveAmountForInitialLine);
+            const string initialLineType = "med";
+            _reserveContext.Claim = new Claim(initialReserveAmountForInitialLine, initialLineType);
         }
 
         [When(@"a new line is added to the claim with an initial reserve amount of \$(.*)")]
         public void WhenANewLineIsAddedToTheClaimWithAnInitialReserveAmountOf(decimal initialLineAmount)
         {
-            _reserveContext.Claim.AddLine(initialLineAmount);
+            const string newLineType = "med2";
+            _reserveContext.Claim.AddLine(initialLineAmount, newLineType);
         }
 
         [Then(@"the initial reserve amount is set to \$(.*) on the new line")]
@@ -72,7 +75,8 @@ namespace Poc.Claims.Specs
         [Given(@"an existing claim has an initial line reserve amount of \$(.*)")]
         public void GivenAnExistingClaimHasAnInitialLineReserveAmountOf(decimal initialReserveAmount)
         {
-            _reserveContext.Claim = new Claim(initialReserveAmount);
+            const string initialLineType = "med";
+            _reserveContext.Claim = new Claim(initialReserveAmount, initialLineType);
         }
 
         [Then(@"the total reserve amount is set to \$(.*) on the new claim")]
@@ -84,6 +88,18 @@ namespace Poc.Claims.Specs
         [Given(@"an existing claim with these lines")]
         public void GivenAnExistingClaimWithTheseLines(Table table)
         {
+            var initialLineType = table.Rows.First()["line type"];
+            var initialReserveAmount = decimal.Parse(table.Rows.First()["reserve amount"]);
+
+            _reserveContext.Claim = new Claim(initialReserveAmount, initialLineType);
+
+            for (int i = 1; i < table.RowCount; i++)
+            {
+                var row = table.Rows[i];
+
+                _reserveContext.Claim.AddLine(decimal.Parse(row["reserve amount"]), row["reserve amount"]);
+            }
+
             ScenarioContext.Current.Pending();
         }
 
