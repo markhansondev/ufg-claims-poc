@@ -10,9 +10,9 @@ namespace Poc.Claims
 
         private readonly IList<Line> _lines;
 
-        public Claim(decimal initialReserveAmount, string lineType)
+        public Claim(IEnumerable<Line> lines)
         {
-            _lines = new List<Line> { new(initialReserveAmount, lineType) };
+            _lines = lines.ToList();
         }
 
         public void AddLine(decimal initialLineAmount, string lineType)
@@ -20,10 +20,9 @@ namespace Poc.Claims
             _lines.Add(new Line(initialLineAmount, lineType));
         }
 
-        //public void CloseLine(Line line)
-        //{
-            ////We are zeroing out the reserve amount: may be additional steps to closing a line
-            ////line.ReserveAmount = 0;
-        //}
+        public void CloseLine(string lineType)
+        {
+            _lines.Single(line => line.LineType.Equals(lineType)).Close();
+        }
     }
 }

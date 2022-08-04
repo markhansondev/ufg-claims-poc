@@ -56,7 +56,7 @@ namespace Poc.Claims.Specs
         {
             const decimal initialReserveAmountForInitialLine = 1000;
             const string initialLineType = "med";
-            _reserveContext.Claim = new Claim(initialReserveAmountForInitialLine, initialLineType);
+            _reserveContext.Claim = new Claim(new [] { new Line(initialReserveAmountForInitialLine, initialLineType) });
         }
 
         [When(@"a new line is added to the claim with an initial reserve amount of \$(.*)")]
@@ -76,7 +76,7 @@ namespace Poc.Claims.Specs
         public void GivenAnExistingClaimHasAnInitialLineReserveAmountOf(decimal initialReserveAmount)
         {
             const string initialLineType = "med";
-            _reserveContext.Claim = new Claim(initialReserveAmount, initialLineType);
+            _reserveContext.Claim = new Claim(new[] { new Line(initialReserveAmount, initialLineType) });
         }
 
         [Then(@"the total reserve amount is set to \$(.*) on the new claim")]
@@ -88,25 +88,20 @@ namespace Poc.Claims.Specs
         [Given(@"an existing claim with these lines")]
         public void GivenAnExistingClaimWithTheseLines(Table table)
         {
-            var initialLineType = table.Rows.First()["line type"];
-            var initialReserveAmount = decimal.Parse(table.Rows.First()["reserve amount"]);
-
-            _reserveContext.Claim = new Claim(initialReserveAmount, initialLineType);
-
-            for (int i = 1; i < table.RowCount; i++)
-            {
-                var row = table.Rows[i];
-
-                _reserveContext.Claim.AddLine(decimal.Parse(row["reserve amount"]), row["reserve amount"]);
-            }
-
-            ScenarioContext.Current.Pending();
+            var lines = table.Rows.Select(
+                row => new Line(
+                    decimal.Parse(row["reserve amount"]),
+                    row["line type"]
+                )
+            );
+            
+            _reserveContext.Claim = new Claim(lines);
         }
 
         [When(@"the ""(.*)"" line is closed")]
-        public void WhenTheLineIsClosed(string p0)
+        public void WhenTheLineIsClosed(string lineType)
         {
-            ScenarioContext.Current.Pending();
+            _reserveContext.Claim.CloseLine(lineType);
         }
 
         [Then(@"the total reserve amount is \$(.*)")]

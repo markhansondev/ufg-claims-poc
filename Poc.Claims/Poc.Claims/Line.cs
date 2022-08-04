@@ -4,10 +4,16 @@
     {
         public decimal ReserveAmount { get; set; }
         public string LineType { get; set; }
-        internal Line(decimal initialAmount, string lineType)
+
+        public Line(decimal initialAmount, string lineType)
         {
             LineType = lineType;
             ReserveAmount = initialAmount;
+        }
+
+        public void Close()
+        {
+            ReserveAmount = 0;
         }
     }
 }
