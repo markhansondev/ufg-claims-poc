@@ -20,9 +20,14 @@ namespace Poc.Claims
             _lines.Add(new Line(initialLineAmount, lineType));
         }
 
+        public Line GetLine(string lineType)
+        {
+            return _lines.Single(line => line.LineType.Equals(lineType));
+        }
+
         public void CloseLine(string lineType)
         {
-            _lines.Single(line => line.LineType.Equals(lineType)).Close();
+            GetLine(lineType).Close();
         }
     }
 }

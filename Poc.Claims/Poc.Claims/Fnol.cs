@@ -7,7 +7,7 @@
 
         public Claim CreateClaim(string lineType)
         {
-            return new Claim(FnolLineLiabilityAmount, lineType);
+            return new Claim(new[] { new Line(FnolLineLiabilityAmount, lineType) });
         }
     }
 }

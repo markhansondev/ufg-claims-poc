@@ -34,7 +34,7 @@ namespace Poc.Claims.Specs
         [Given(@"the FNOL line liability amount is \$(.*)")]
         public void GivenTheFNOLLineLiabilityAmount(decimal fnolLineLiabilityAmount)
         {
-            _reserveContext.Fnol.FnolLineLiabilityAmount = fnolLineLiabilityAmount; 
+            _reserveContext.Fnol.FnolLineLiabilityAmount = fnolLineLiabilityAmount;
         }
 
         [When(@"the claim is created from an FNOL")]
@@ -56,7 +56,7 @@ namespace Poc.Claims.Specs
         {
             const decimal initialReserveAmountForInitialLine = 1000;
             const string initialLineType = "med";
-            _reserveContext.Claim = new Claim(new [] { new Line(initialReserveAmountForInitialLine, initialLineType) });
+            _reserveContext.Claim = new Claim(new[] { new Line(initialReserveAmountForInitialLine, initialLineType) });
         }
 
         [When(@"a new line is added to the claim with an initial reserve amount of \$(.*)")]
@@ -94,7 +94,7 @@ namespace Poc.Claims.Specs
                     row["line type"]
                 )
             );
-            
+
             _reserveContext.Claim = new Claim(lines);
         }
 
@@ -105,15 +105,15 @@ namespace Poc.Claims.Specs
         }
 
         [Then(@"the total reserve amount is \$(.*)")]
-        public void ThenTheTotalReserveAmountIs(int p0)
+        public void ThenTheTotalReserveAmountIs(decimal newReserveAmount)
         {
-            ScenarioContext.Current.Pending();
+            _reserveContext.Claim.TotalReserveAmount.ShouldBe(newReserveAmount);
         }
 
         [Then(@"the ""(.*)"" line has a reserve amount of \$(.*)")]
-        public void ThenTheLineHasAReserveAmountOf(string p0, int p1)
+        public void ThenTheLineHasAReserveAmountOf(string lineType, decimal newLineReserveAmount)
         {
-            ScenarioContext.Current.Pending();
+            _reserveContext.Claim.GetLine(lineType).ReserveAmount.ShouldBe(newLineReserveAmount);
         }
     }
 }

@@ -21,9 +21,9 @@ Scenario: Close a single line on a claim that has multiple lines
 	Given an existing claim with these lines
 	| line type | reserve amount |
 	| medical   | 2000           |
-	| x         | 3000           |
+	| x			| 3000           |
 	| y         | 1000           |
 	| z         | 1000           |
 	When the "medical" line is closed
-	Then the total reserve amount is $5000 
-	And the "medical" line has a reserve amount of $0
+	Then the total reserve amount is $5000.00
+	And the "medical" line has a reserve amount of $0.00
