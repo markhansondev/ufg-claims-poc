@@ -5,29 +5,24 @@ namespace Poc.Claims
 {
     public class Claim
     {
-        public IEnumerable<Line> Lines => _lines;
-        public decimal TotalReserveAmount => Lines.Sum(line => line.ReserveAmount);
+        public IEnumerable<Claimant> Claimants => _claimants;
+        public decimal TotalReserveAmount => Claimants.Sum(claimant => claimant.TotalReserveAmount);
 
-        private readonly IList<Line> _lines;
+        private readonly IList<Claimant> _claimants;
 
-        public Claim(IEnumerable<Line> lines)
+        public Claim(Claimant claimant)
         {
-            _lines = lines.ToList();
+            _claimants = new List<Claimant>() { claimant };
         }
 
-        public void AddLine(decimal initialLineAmount, string lineType)
+        public void AddClaimant(string name)
         {
-            _lines.Add(new Line(initialLineAmount, lineType));
+            _claimants.Add(new Claimant(name));
         }
 
-        public Line GetLine(string lineType)
+        public Claimant GetClaimant(string name)
         {
-            return _lines.Single(line => line.LineType.Equals(lineType));
-        }
-
-        public void CloseLine(string lineType)
-        {
-            GetLine(lineType).Close();
+            return _claimants.Single(claimant => claimant.Name == name);
         }
     }
 }

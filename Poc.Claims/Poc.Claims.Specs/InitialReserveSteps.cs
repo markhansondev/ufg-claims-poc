@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using TechTalk.SpecFlow;
 using Shouldly;
 
@@ -17,12 +16,18 @@ namespace Poc.Claims.Specs
 
 
         private ReserveContext _reserveContext;
+        private const string DefaultLineType = "medical";
+        private const string NewLineType = "line type 2";
+        private const string DefaultClaimantName = "Sonia";
+        private const decimal DefaultReserveAmount = 1000;
 
         [BeforeScenario]
         public void SetupScenario()
         {
             _reserveContext = new ReserveContext();
             _reserveContext.Fnol = new Fnol();
+            _reserveContext.Fnol.ClaimantName = DefaultClaimantName;
+            _reserveContext.Fnol.LineType = DefaultLineType;
         }
 
         [Given(@"an FNOL is ready to be completed")]
@@ -40,43 +45,46 @@ namespace Poc.Claims.Specs
         [When(@"the claim is created from an FNOL")]
         public void WhenTheClaimIsCreatedFromAnFNOL()
         {
-            var initialLineType = "med";
-            _reserveContext.Claim = _reserveContext.Fnol.CreateClaim(initialLineType);
+            _reserveContext.Claim = _reserveContext.Fnol.CreateClaim();
         }
 
         [Then(@"the line initial reserve amount is set to \$(.*)")]
-        public void ThenTheInitialReserveAmountIsSetTo(decimal initialReserveAmount)
+        public void ThenTheLineInitialReserveAmountIsSetTo(decimal initialReserveAmount)
         {
             _reserveContext.Claim.ShouldNotBeNull();
-            _reserveContext.Claim.Lines.First().ReserveAmount.ShouldBe(initialReserveAmount);
+            _reserveContext.Claim.GetClaimant(DefaultClaimantName).GetLine(DefaultLineType).ReserveAmount.ShouldBe(initialReserveAmount);
         }
 
         [Given(@"an existing claim has an initial line reserve amount")]
         public void GivenAnExistingClaimHasAnInitialLineReserveAmount()
         {
-            const decimal initialReserveAmountForInitialLine = 1000;
-            const string initialLineType = "med";
-            _reserveContext.Claim = new Claim(new[] { new Line(initialReserveAmountForInitialLine, initialLineType) });
+            _reserveContext.Claim = new Claim(
+                new Claimant(
+                    DefaultClaimantName,
+                    new[] { new Line(DefaultReserveAmount, DefaultLineType) }));
         }
 
         [When(@"a new line is added to the claim with an initial reserve amount of \$(.*)")]
         public void WhenANewLineIsAddedToTheClaimWithAnInitialReserveAmountOf(decimal initialLineAmount)
         {
-            const string newLineType = "med2";
-            _reserveContext.Claim.AddLine(initialLineAmount, newLineType);
+            _reserveContext.Claim.GetClaimant(DefaultClaimantName).AddLine(initialLineAmount, NewLineType);
         }
 
         [Then(@"the initial reserve amount is set to \$(.*) on the new line")]
         public void ThenTheInitialReserveAmountIsSetToOnTheNewLine(decimal reserveAmount)
         {
-            _reserveContext.Claim.Lines.LastOrDefault()?.ReserveAmount.ShouldBe(reserveAmount);
+            _reserveContext.Claim
+                .GetClaimant(DefaultClaimantName)
+                .GetLine(NewLineType).ReserveAmount.ShouldBe(reserveAmount);
         }
 
         [Given(@"an existing claim has an initial line reserve amount of \$(.*)")]
         public void GivenAnExistingClaimHasAnInitialLineReserveAmountOf(decimal initialReserveAmount)
         {
-            const string initialLineType = "med";
-            _reserveContext.Claim = new Claim(new[] { new Line(initialReserveAmount, initialLineType) });
+            _reserveContext.Claim = new Claim(
+                new Claimant(
+                    DefaultClaimantName,
+                    new[] { new Line(initialReserveAmount, DefaultLineType) }));
         }
 
         [Then(@"the total reserve amount is set to \$(.*) on the new claim")]
@@ -88,20 +96,22 @@ namespace Poc.Claims.Specs
         [Given(@"an existing claim with these lines")]
         public void GivenAnExistingClaimWithTheseLines(Table table)
         {
-            var lines = table.Rows.Select(
-                row => new Line(
-                    decimal.Parse(row["reserve amount"]),
-                    row["line type"]
-                )
-            );
-
-            _reserveContext.Claim = new Claim(lines);
+            _reserveContext.Claim = new Claim(
+                new Claimant(
+                    DefaultClaimantName,
+                    table.Rows.Select(
+                        row => new Line(
+                            decimal.Parse(row["reserve amount"]),
+                            row["line type"])
+                        )
+                    )
+                );
         }
 
         [When(@"the ""(.*)"" line is closed")]
         public void WhenTheLineIsClosed(string lineType)
         {
-            _reserveContext.Claim.CloseLine(lineType);
+            _reserveContext.Claim.GetClaimant(DefaultClaimantName).CloseLine(lineType);
         }
 
         [Then(@"the total reserve amount is \$(.*)")]
@@ -113,7 +123,7 @@ namespace Poc.Claims.Specs
         [Then(@"the ""(.*)"" line has a reserve amount of \$(.*)")]
         public void ThenTheLineHasAReserveAmountOf(string lineType, decimal newLineReserveAmount)
         {
-            _reserveContext.Claim.GetLine(lineType).ReserveAmount.ShouldBe(newLineReserveAmount);
+            _reserveContext.Claim.GetClaimant(DefaultClaimantName).GetLine(lineType).ReserveAmount.ShouldBe(newLineReserveAmount);
         }
     }
 }
