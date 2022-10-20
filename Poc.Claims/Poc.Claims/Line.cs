@@ -2,8 +2,8 @@
 {
     public class Line
     {
-        public decimal ReserveAmount { get; set; }
-        public string LineType { get; set; }
+        public decimal ReserveAmount { get; protected set; }
+        public string LineType { get; protected set; }
 
         public Line(decimal initialAmount, string lineType)
         {

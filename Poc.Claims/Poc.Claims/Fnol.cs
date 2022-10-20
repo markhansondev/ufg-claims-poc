@@ -2,12 +2,13 @@
 {
     public class Fnol
     {
-        public bool IsReadyToBeCompleted { get; set; }
-        public decimal FnolLineLiabilityAmount { get; set; }
-        public string LineType { get; set; }
-        public string ClaimantName { get; set; }
+        public virtual long Id { get; protected set; }
+        public virtual bool IsReadyToBeCompleted { get; set; }
+        public virtual decimal FnolLineLiabilityAmount { get; set; }
+        public virtual string LineType { get; set; }
+        public virtual string ClaimantName { get; set; }
 
-        public Claim CreateClaim()
+        public virtual Claim CreateClaim()
         {
             return new Claim(
                 new Claimant(

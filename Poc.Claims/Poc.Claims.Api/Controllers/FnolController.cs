@@ -23,7 +23,7 @@ namespace Poc.Claims.Api.Controllers
 
         public FnolDto Get(int id)
         {
-            return FnolService.GetFnol();
+            return new FnolService().GetFnol();
         }
     }
 }

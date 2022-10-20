@@ -1,15 +1,19 @@
-﻿using System;
+﻿using Poc.Claims.Utils;
 
 namespace Poc.Claims.Services
 {
     public class FnolService
     {
-        public static FnolDto GetFnol() => new() { line_type = "line type 1", claimant_name = "claimant 1"};
-    }
+        public FnolService()
+        {
+            Initer.Init(@"Server=.;Database=ClaimsPoc;Trusted_Connection=true");
+        }
 
-    public class FnolDto
-    {
-        public string line_type { get; set; }
-        public string claimant_name { get; set; }
+        public FnolDto GetFnol()
+        {
+            var fnol = new FnolRepository().GetById(1);
+            //new(1, true, 100, "med", "claimant 1");
+            return new FnolDto(fnol.Id, fnol.IsReadyToBeCompleted, fnol.FnolLineLiabilityAmount, fnol.LineType, fnol.ClaimantName);
+        }
     }
 }
