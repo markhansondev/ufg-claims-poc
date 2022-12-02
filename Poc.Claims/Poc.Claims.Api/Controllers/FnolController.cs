@@ -23,7 +23,14 @@ namespace Poc.Claims.Api.Controllers
 
         public FnolDto Get(int id)
         {
-            return new FnolService().GetFnol();
+            return new FnolService().GetFnol(id);
+        }
+
+        [HttpPost]
+        public ActionResult<FnolDto> Create(FnolDto fnolDto)
+        {
+            var fnol = new FnolService().CreateFnol(fnolDto);
+            return CreatedAtAction("Create", new { id = fnol.Id }, fnol);
         }
     }
 }

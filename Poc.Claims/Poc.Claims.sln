@@ -7,9 +7,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poc.Claims", "Poc.Claims\Po
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poc.Claims.Specs", "Poc.Claims.Specs\Poc.Claims.Specs.csproj", "{DB1C8E7F-4982-4A32-9830-CABA1C9BAE4F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poc.Claims.Api", "Poc.Claims.Api\Poc.Claims.Api.csproj", "{C8DBEA16-B370-46DD-A391-FA6A26942A47}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poc.Claims.Api", "Poc.Claims.Api\Poc.Claims.Api.csproj", "{C8DBEA16-B370-46DD-A391-FA6A26942A47}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poc.Claims.Services", "Poc.Claims.Services\Poc.Claims.Services.csproj", "{689B456D-34DE-4710-B1A5-97CD241CAB74}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poc.Claims.Services", "Poc.Claims.Services\Poc.Claims.Services.csproj", "{689B456D-34DE-4710-B1A5-97CD241CAB74}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{09609B4F-1EBD-4C61-B68C-492BA65A3E48}"
+	ProjectSection(SolutionItems) = preProject
+		DBCreationScript.txt = DBCreationScript.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

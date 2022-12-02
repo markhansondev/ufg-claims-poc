@@ -3,11 +3,15 @@ namespace Poc.Claims.Services
 {
     public class FnolDto
     {
-        public virtual long id { get; }
-        public bool is_ready_to_be_completed { get; }
-        public decimal line_liability_amount { get; }
-        public string line_type { get; }
-        public string claimant_name { get; }
+        public virtual long id { get; set; }
+        public bool is_ready_to_be_completed { get; set; }
+        public decimal line_liability_amount { get; set; }
+        public string line_type { get; set; }
+        public string claimant_name { get; set; }
+
+        public FnolDto()
+        {
+        }
 
         public FnolDto(long id1, bool isReadyToBeCompleted, decimal lineLiabilityAmount, string lineType, string claimantName)
         {

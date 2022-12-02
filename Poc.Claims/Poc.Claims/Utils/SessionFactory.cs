@@ -38,19 +38,20 @@ namespace Poc.Claims.Utils
                     .Conventions.Add<TableNameConvention>()
                     .Conventions.Add<HiLoConvention>()
                 );
-                //.ExposeConfiguration(x =>
-                //{
-                //    x.EventListeners.PostCommitUpdateEventListeners =
-                //        new IPostUpdateEventListener[] { new EventListener() };
-                //    x.EventListeners.PostCommitInsertEventListeners =
-                //        new IPostInsertEventListener[] { new EventListener() };
-                //    x.EventListeners.PostCommitDeleteEventListeners =
-                //        new IPostDeleteEventListener[] { new EventListener() };
-                //    x.EventListeners.PostCollectionUpdateEventListeners =
-                //        new IPostCollectionUpdateEventListener[] { new EventListener() };
-                //});
+            //.ExposeConfiguration(x =>
+            //{
+            //    x.EventListeners.PostCommitUpdateEventListeners =
+            //        new IPostUpdateEventListener[] { new EventListener() };
+            //    x.EventListeners.PostCommitInsertEventListeners =
+            //        new IPostInsertEventListener[] { new EventListener() };
+            //    x.EventListeners.PostCommitDeleteEventListeners =
+            //        new IPostDeleteEventListener[] { new EventListener() };
+            //    x.EventListeners.PostCollectionUpdateEventListeners =
+            //        new IPostCollectionUpdateEventListener[] { new EventListener() };
+            //});
 
-            return configuration.ExposeConfiguration(cfg => new SchemaUpdate(cfg).Execute(false, true)).BuildSessionFactory();
+            //return configuration.ExposeConfiguration(cfg => new SchemaUpdate(cfg).Execute(false, true)).BuildSessionFactory();
+            return configuration.BuildSessionFactory();
         }
 
         public class TableNameConvention : IClassConvention

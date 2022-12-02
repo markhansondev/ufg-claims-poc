@@ -1,0 +1,41 @@
+
+USE [ClaimsPoc]
+GO
+
+CREATE TABLE [dbo].[Ids](
+	[EntityName] [nvarchar](100) NOT NULL,
+	[NextHigh] [int] NOT NULL,
+ CONSTRAINT [PK_Ids] PRIMARY KEY CLUSTERED 
+(
+	[EntityName] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+/****** Object:  Table [dbo].[Fnol]    Script Date: 12/2/2022 12:07:58 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Fnol](
+	[FnolID] [bigint] NOT NULL,
+	[IsReadyToBeCompleted] [bit] NOT NULL,
+	[FnolLineLiabilityAmount] [decimal](19, 5) NOT NULL,
+	[LineType] [nvarchar](255) NOT NULL,
+	[ClaimantName] [nvarchar](255) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[FnolID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+
+INSERT [dbo].[Ids] ([EntityName], [NextHigh]) VALUES (N'Fnol', 1)
+GO
+
+select * from Ids
+select * from Fnol

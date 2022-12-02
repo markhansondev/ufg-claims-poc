@@ -9,11 +9,24 @@ namespace Poc.Claims.Services
             Initer.Init(@"Server=.;Database=ClaimsPoc;Trusted_Connection=true");
         }
 
-        public FnolDto GetFnol()
+        public FnolDto GetFnol(int id)
         {
-            var fnol = new FnolRepository().GetById(1);
+            var fnol = new FnolRepository().GetById(id);
             //new(1, true, 100, "med", "claimant 1");
             return new FnolDto(fnol.Id, fnol.IsReadyToBeCompleted, fnol.FnolLineLiabilityAmount, fnol.LineType, fnol.ClaimantName);
+        }
+
+        public Fnol CreateFnol(FnolDto fnolDto)
+        {
+            var fnol = new Fnol()
+            {
+                IsReadyToBeCompleted = fnolDto.is_ready_to_be_completed,
+                FnolLineLiabilityAmount = fnolDto.line_liability_amount,
+                LineType = fnolDto.line_type,
+                ClaimantName = fnolDto.claimant_name
+            };
+            new FnolRepository().Save(fnol);
+            return fnol;
         }
     }
 }
