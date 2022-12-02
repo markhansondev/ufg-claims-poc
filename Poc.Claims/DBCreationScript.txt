@@ -1,5 +1,18 @@
 
+USE [master]
+GO
+DROP DATABASE IF EXISTS [ClaimsPoc]
+GO
+
+CREATE DATABASE [ClaimsPoc]
+GO
 USE [ClaimsPoc]
+GO
+
+/****** Object:  Table [dbo].[Ids]    Script Date: 12/2/2022 12:07:58 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE TABLE [dbo].[Ids](
