@@ -1,4 +1,5 @@
 ﻿using Poc.Claims.Utils;
+using System;
 
 namespace Poc.Claims.Services
 {
@@ -28,5 +29,8 @@ namespace Poc.Claims.Services
             new FnolRepository().Save(fnol);
             return fnol;
         }
+
+        //TODO: This method should return a claim dto
+        public Claim CreateClaim(int id) => new FnolRepository().GetById(id).CreateClaim();            
     }
 }

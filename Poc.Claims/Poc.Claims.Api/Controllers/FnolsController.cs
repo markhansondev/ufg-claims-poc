@@ -10,11 +10,11 @@ namespace Poc.Claims.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class FnolController : ControllerBase
+    public class FnolsController : ControllerBase
     {
-        private readonly ILogger<FnolController> _logger;
+        private readonly ILogger<FnolsController> _logger;
 
-        public FnolController(ILogger<FnolController> logger)
+        public FnolsController(ILogger<FnolsController> logger)
         {
             _logger = logger;
         }
@@ -32,5 +32,13 @@ namespace Poc.Claims.Api.Controllers
             var fnol = new FnolService().CreateFnol(fnolDto);
             return CreatedAtAction("Create", new { id = fnol.Id }, fnol);
         }
+
+        [HttpPost("{id}/claims")]
+        public ActionResult<Claim> CreateClaim(int id)
+        {
+            var claim = new FnolService().CreateClaim(id);
+            return CreatedAtAction("Create", new { id = 1 }, claim);
+        }
+
     }
 }

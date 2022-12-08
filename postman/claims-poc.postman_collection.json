@@ -7,7 +7,7 @@
 	},
 	"item": [
 		{
-			"name": "https://localhost:44359/fnol",
+			"name": "https://localhost:44359/fnols",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -21,33 +21,33 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:44359/fnol",
+					"raw": "https://localhost:44359/fnols",
 					"protocol": "https",
 					"host": [
 						"localhost"
 					],
 					"port": "44359",
 					"path": [
-						"fnol"
+						"fnols"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "https://localhost:44359/fnol/10",
+			"name": "https://localhost:44359/fnols/10",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:44359/fnol/10",
+					"raw": "https://localhost:44359/fnols/10",
 					"protocol": "https",
 					"host": [
 						"localhost"
 					],
 					"port": "44359",
 					"path": [
-						"fnol",
+						"fnols",
 						"10"
 					]
 				}
