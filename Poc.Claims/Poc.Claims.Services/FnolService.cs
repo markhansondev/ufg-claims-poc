@@ -5,12 +5,12 @@ namespace Poc.Claims.Services
 {
     public class FnolService
     {
-        public FnolService()
+        public FnolService(string connectionString)
         {
-            Initer.Init(@"Server=.;Database=ClaimsPoc;Trusted_Connection=true");
+            Initer.Init(connectionString);
         }
 
-        public FnolDto GetFnol(int id)
+        public FnolDto GetFnol(long id)
         {
             var fnol = new FnolRepository().GetById(id);
             //new(1, true, 100, "med", "claimant 1");

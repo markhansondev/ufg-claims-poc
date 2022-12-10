@@ -13,30 +13,32 @@ namespace Poc.Claims.Api.Controllers
     public class FnolsController : ControllerBase
     {
         private readonly ILogger<FnolsController> _logger;
+        private readonly FnolService _fnolService;
 
         public FnolsController(ILogger<FnolsController> logger)
         {
             _logger = logger;
-        }
+            _fnolService = new FnolService(@"Server=.;Database=ClaimsPoc;Trusted_Connection=true");
+        } 
 
         [HttpGet("{id}")]
 
         public FnolDto Get(int id)
         {
-            return new FnolService().GetFnol(id);
+            return _fnolService.GetFnol(id);
         }
 
         [HttpPost]
         public ActionResult<FnolDto> Create(FnolDto fnolDto)
         {
-            var fnol = new FnolService().CreateFnol(fnolDto);
+            var fnol = _fnolService.CreateFnol(fnolDto);
             return CreatedAtAction("Create", new { id = fnol.Id }, fnol);
         }
 
         [HttpPost("{id}/claims")]
         public ActionResult<Claim> CreateClaim(int id)
         {
-            var claim = new FnolService().CreateClaim(id);
+            var claim = _fnolService.CreateClaim(id);
             return CreatedAtAction("Create", new { id = 1 }, claim);
         }
 
