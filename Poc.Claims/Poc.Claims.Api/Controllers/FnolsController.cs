@@ -41,6 +41,5 @@ namespace Poc.Claims.Api.Controllers
             var claim = _fnolService.CreateClaim(id);
             return CreatedAtAction("Create", new { id = 1 }, claim);
         }
-
     }
 }

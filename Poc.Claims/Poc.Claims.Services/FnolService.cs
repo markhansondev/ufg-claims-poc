@@ -31,6 +31,13 @@ namespace Poc.Claims.Services
         }
 
         //TODO: This method should return a claim dto
-        public Claim CreateClaim(int id) => new FnolRepository().GetById(id).CreateClaim();            
+        public Claim CreateClaim(int id)
+        {
+            var claim = new FnolRepository().GetById(id).CreateClaim();
+
+            new ClaimRepository().Save(claim);
+
+            return claim;
+        }
     }
 }

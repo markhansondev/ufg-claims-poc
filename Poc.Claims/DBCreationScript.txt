@@ -1,8 +1,14 @@
 
 USE [master]
 GO
+
+--drop existing connections to the database
+--ALTER DATABASE IF EXISTS [ClaimsPoc] set single_user with rollback immediate
+--GO
+
 DROP DATABASE IF EXISTS [ClaimsPoc]
 GO
+
 
 CREATE DATABASE [ClaimsPoc]
 GO
@@ -48,6 +54,9 @@ GO
 
 
 INSERT [dbo].[Ids] ([EntityName], [NextHigh]) VALUES (N'Fnol', 1)
+GO
+
+INSERT [dbo].[Ids] ([EntityName], [NextHigh]) VALUES (N'Claim', 1)
 GO
 
 select * from Ids
