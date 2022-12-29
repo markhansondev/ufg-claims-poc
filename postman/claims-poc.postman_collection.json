@@ -35,12 +35,12 @@
 			"response": []
 		},
 		{
-			"name": "https://localhost:44359/fnols/10",
+			"name": "https://localhost:44359/fnols/{{fnol_id}}",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:44359/fnols/10",
+					"raw": "https://localhost:44359/fnols/{{fnol_id}}",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -48,11 +48,38 @@
 					"port": "44359",
 					"path": [
 						"fnols",
-						"10"
+						"{{fnol_id}}"
 					]
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "https://localhost:44359/fnols/{{fnol_id}}/claims",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44359/fnols/{{fnol_id}}/claims",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44359",
+					"path": [
+						"fnols",
+						"{{fnol_id}}",
+						"claims"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "fnol_id",
+			"value": "10"
 		}
 	]
 }

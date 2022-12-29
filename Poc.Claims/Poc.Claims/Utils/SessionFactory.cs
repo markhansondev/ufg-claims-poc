@@ -50,8 +50,8 @@ namespace Poc.Claims.Utils
             //        new IPostCollectionUpdateEventListener[] { new EventListener() };
             //});
 
-            return configuration.ExposeConfiguration(cfg => new SchemaUpdate(cfg).Execute(false, true)).BuildSessionFactory();
-            //return configuration.BuildSessionFactory();
+            //return configuration.ExposeConfiguration(cfg => new SchemaUpdate(cfg).Execute(false, true)).BuildSessionFactory();
+            return configuration.BuildSessionFactory();
         }
 
         public class TableNameConvention : IClassConvention

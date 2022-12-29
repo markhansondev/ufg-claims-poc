@@ -7,10 +7,11 @@ namespace Poc.Claims
         public ClaimMap()
         {
             Id(x => x.Id);
-            //Map(x => x.IsReadyToBeCompleted);
-            //Map(x => x.FnolLineLiabilityAmount);
-            //Map(x => x.LineType);
-            //Map(x => x.ClaimantName);
+
+            HasMany(x => x.Claimants)
+                .Cascade.SaveUpdate()
+                .Not.LazyLoad();
+            //.Inverse();
         }
     }
 }

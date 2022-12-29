@@ -12,12 +12,11 @@ namespace Poc.Claims.Services
 
         public FnolDto GetFnol(long id)
         {
-            var fnol = new FnolRepository().GetById(id);
-            //new(1, true, 100, "med", "claimant 1");
-            return new FnolDto(fnol.Id, fnol.IsReadyToBeCompleted, fnol.FnolLineLiabilityAmount, fnol.LineType, fnol.ClaimantName);
+            return new FnolDto(
+                new FnolRepository().GetById(id));
         }
 
-        public Fnol CreateFnol(FnolDto fnolDto)
+        public FnolDto CreateFnol(FnolDto fnolDto)
         {
             var fnol = new Fnol()
             {
@@ -27,17 +26,14 @@ namespace Poc.Claims.Services
                 ClaimantName = fnolDto.claimant_name
             };
             new FnolRepository().Save(fnol);
-            return fnol;
+            return new FnolDto(fnol);
         }
 
-        //TODO: This method should return a claim dto
-        public Claim CreateClaim(int id)
+        public ClaimDto CreateClaim(long id)
         {
             var claim = new FnolRepository().GetById(id).CreateClaim();
-
             new ClaimRepository().Save(claim);
-
-            return claim;
+            return new ClaimDto(claim);
         }
     }
 }

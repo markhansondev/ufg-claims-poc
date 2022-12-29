@@ -13,13 +13,13 @@ namespace Poc.Claims.Services
         {
         }
 
-        public FnolDto(long id1, bool isReadyToBeCompleted, decimal lineLiabilityAmount, string lineType, string claimantName)
+        public FnolDto(Fnol fnol)
         {
-            id = id1;
-            is_ready_to_be_completed = isReadyToBeCompleted;
-            line_liability_amount = lineLiabilityAmount;
-            line_type = lineType;
-            claimant_name = claimantName;
+            id = fnol.Id;
+            is_ready_to_be_completed = fnol.IsReadyToBeCompleted;
+            line_liability_amount = fnol.FnolLineLiabilityAmount;
+            line_type = fnol.LineType;
+            claimant_name = fnol.ClaimantName;
         }
     }
 }

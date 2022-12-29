@@ -1,9 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Poc.Claims.Services;
 
 namespace Poc.Claims.Api.Controllers
@@ -29,17 +25,17 @@ namespace Poc.Claims.Api.Controllers
         }
 
         [HttpPost]
-        public ActionResult<FnolDto> Create(FnolDto fnolDto)
+        public ActionResult<FnolDto> Create(FnolDto createFnolDto)
         {
-            var fnol = _fnolService.CreateFnol(fnolDto);
-            return CreatedAtAction("Create", new { id = fnol.Id }, fnol);
+            var fnolDto = _fnolService.CreateFnol(createFnolDto);
+            return CreatedAtAction(nameof(Get), new { id = fnolDto.id }, fnolDto);
         }
 
         [HttpPost("{id}/claims")]
-        public ActionResult<Claim> CreateClaim(int id)
+        public ActionResult<ClaimDto> CreateClaim(int id)
         {
-            var claim = _fnolService.CreateClaim(id);
-            return CreatedAtAction("Create", new { id = 1 }, claim);
+            var claimDto = _fnolService.CreateClaim(id);
+            return CreatedAtAction(nameof(Get), new { id = claimDto.id }, claimDto);
         }
     }
 }

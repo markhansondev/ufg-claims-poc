@@ -21,7 +21,7 @@ namespace Poc.Claims.IntegrationTests
             server.ConnectionContext
                 .ExecuteNonQuery(
                     File.ReadAllText(@"../../../../DBCreationScript.txt")
-                        .Replace("[ClaimsPoc]", "[ClaimsPocIntegrationTest]"));
+                        .Replace("ClaimsPoc", "ClaimsPocIntegrationTest"));
 
             _fnolService = new FnolService(@"Server=.;Database=ClaimsPocIntegrationTest;Trusted_Connection=true");
         }
@@ -54,7 +54,7 @@ namespace Poc.Claims.IntegrationTests
 
             //execute
             var fnol = _fnolService.CreateFnol(fnolDto);
-            var getFnolDto = _fnolService.GetFnol(fnol.Id);
+            var getFnolDto = _fnolService.GetFnol(fnol.id);
 
             //verify
             fnolDto.id = 10;
