@@ -74,11 +74,65 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "https://localhost:44359/claims/{{claim_id}}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44359/claims/{{claim_id}}",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44359",
+					"path": [
+						"claims",
+						"{{claim_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:44359/claims/{{claim_id}}/claimants",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"claimant 2\" \r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44359/claims/{{claim_id}}/claimants",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44359",
+					"path": [
+						"claims",
+						"{{claim_id}}",
+						"claimants"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"variable": [
 		{
 			"key": "fnol_id",
+			"value": "10"
+		},
+		{
+			"key": "claim_id",
 			"value": "10"
 		}
 	]
