@@ -7,12 +7,16 @@ namespace Poc.Claims.Services
     public class ClaimDto
     {
         public virtual long id { get; set; }
-        public virtual IEnumerable<ClaimantDto> claimants { get; }
+        public virtual IEnumerable<ClaimantDto> claimants { get; set; }
+
+        public ClaimDto()
+        {
+        }
 
         public ClaimDto(Claim claim)
         {
             id = claim.Id;
-            claimants = claim.Claimants.Select(claimant => new ClaimantDto(claimant));
+            claimants = claim.Claimants.Select(claimant => new ClaimantDto(claimant)).ToList();
         } 
     }
 }

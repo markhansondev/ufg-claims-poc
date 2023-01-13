@@ -8,6 +8,10 @@ namespace Poc.Claims
         {
             Id(x => x.Id);
             Map(x => x.Name).Nullable();
+
+            HasMany(x => x.Lines)
+                .Cascade.SaveUpdate()
+                .Not.LazyLoad();
         }
     }
 }

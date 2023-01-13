@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "41cd95dc-7e5e-4aa2-b1ad-874d01384e07",
+		"_postman_id": "16e53f06-57b0-4986-aae2-57372445962d",
 		"name": "claims-poc",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "9233344"
@@ -96,7 +96,7 @@
 			"response": []
 		},
 		{
-			"name": "https://localhost:44359/claims/{{claim_id}}/claimants",
+			"name": "https://localhost:44359/claimants/{{claimant_id}}/lines",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -124,6 +124,36 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "https://localhost:44359/claimants/{{claimant_id}}/lines",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"initial_reserve_amount\": 100,\r\n    \"type\": \"type 1\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44359/claimants/{{claimant_id}}/lines",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44359",
+					"path": [
+						"claimants",
+						"{{claimant_id}}",
+						"lines"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"variable": [
@@ -133,6 +163,10 @@
 		},
 		{
 			"key": "claim_id",
+			"value": "10"
+		},
+		{
+			"key": "claimant_id",
 			"value": "10"
 		}
 	]

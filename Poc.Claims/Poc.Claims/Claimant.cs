@@ -28,19 +28,19 @@ namespace Poc.Claims
             _lines = new List<Line>();
         }
 
-        public virtual void AddLine(decimal initialLineAmount, string lineType)
+        public virtual void AddLine(decimal initialReserveAmount, string type)
         {
-            _lines.Add(new Line(initialLineAmount, lineType));
+            _lines.Add(new Line(initialReserveAmount, type));
         }
 
-        public virtual Line GetLine(string lineType)
+        public virtual Line GetLine(string type)
         {
-            return _lines.Single(line => line.LineType.Equals(lineType));
+            return _lines.Single(line => line.Type.Equals(type));
         }
 
-        public virtual void CloseLine(string lineType)
+        public virtual void CloseLine(string type)
         {
-            GetLine(lineType).Close();
+            GetLine(type).Close();
         }
     }
 }
