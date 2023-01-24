@@ -24,7 +24,7 @@ namespace Poc.Claims.Experiments
             _class1ARepository.Save(class1A);
             
             //verify
-            var savedClass1A = _class1ARepository.GetById(class1A.Id);
+            var savedClass1A = _class1ARepository.LoadWithClass2AsById(class1A.Id); //lazy load
             savedClass1A.Class2As.Count().ShouldBe(2);
             savedClass1A.Class2As.ElementAt(0).Id.ShouldNotBe(0);
         }

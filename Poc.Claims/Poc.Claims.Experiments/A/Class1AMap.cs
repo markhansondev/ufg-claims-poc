@@ -10,7 +10,7 @@ namespace Poc.Claims.Experiments.A
 
             HasMany(x => x.Class2As)
                 .Cascade.SaveUpdate()
-                .Not.LazyLoad();
+                .LazyLoad();
         }
     }
 }
