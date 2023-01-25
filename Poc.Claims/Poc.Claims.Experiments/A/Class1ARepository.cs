@@ -1,6 +1,7 @@
 ﻿
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using NHibernate;
 
 namespace Poc.Claims.Experiments.A
@@ -13,7 +14,7 @@ namespace Poc.Claims.Experiments.A
             using (ITransaction transaction = session.BeginTransaction())
             {
                 var class1A = session.Load<Class1A>(id);
-                var class2As = class1A.Class2As; //lazy load
+                class1A.Class2As.Count(); //lazy load
                 transaction.Commit();
                 return class1A;
             }
