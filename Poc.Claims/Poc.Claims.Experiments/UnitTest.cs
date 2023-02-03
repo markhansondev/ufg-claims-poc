@@ -35,7 +35,8 @@ namespace Poc.Claims.Experiments
         {
             var class1B = new Class1B();
             _class1BRepository.Save(class1B);
-            var class2B = _class2BRepository.GetById(class1B.Class2BBriefs.ElementAt(0).Id);
+            var class2BId = class1B.Class2BBriefs.ElementAt(0).Id;
+            var class2B = _class2BRepository.GetById(class2BId);
             class2B.AddClass3B();
             _class2BRepository.Save(class2B);
 
