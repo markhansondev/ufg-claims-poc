@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using CSharpFunctionalExtensions;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Poc.Claims
 {
-    public class Claim
+    public class Claim : Entity<long>
     {
-        public virtual long Id { get; protected set; }
         public virtual IEnumerable<Claimant> Claimants => _claimants;
         public virtual decimal TotalReserveAmount => Claimants.Sum(claimant => claimant.TotalReserveAmount);
 
