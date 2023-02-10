@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using CSharpFunctionalExtensions;
 
 namespace Poc.Claims
 {
-    public class Claimant
+    public class Claimant : ValueObject<Claimant>
     {
+        //todo: don't expose Id to the outside
         public virtual long Id { get; protected set; }
         public virtual string Name { get; set; }
         public virtual IEnumerable<Line> Lines => _lines;
@@ -41,6 +43,17 @@ namespace Poc.Claims
         public virtual void CloseLine(string type)
         {
             GetLine(type).Close();
+        }
+
+        protected override bool EqualsCore(Claimant other)
+        {
+            return Name == other.Name 
+                && Lines == other.Lines;
+        }
+
+        protected override int GetHashCodeCore()
+        {
+            return (Name, Lines).GetHashCode();
         }
     }
 }
