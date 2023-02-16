@@ -7,7 +7,7 @@ namespace Poc.Claims
     public class Claimant : ValueObject<Claimant>
     {
         //todo: don't expose Id to the outside
-        public virtual long Id { get; protected set; }
+        public virtual long Id { get; set; }
         public virtual string Name { get; set; }
         public virtual IEnumerable<Line> Lines => _lines;
         public virtual decimal TotalReserveAmount => Lines.Sum(line => line.ReserveAmount);
@@ -48,7 +48,7 @@ namespace Poc.Claims
         protected override bool EqualsCore(Claimant other)
         {
             return Name == other.Name 
-                && Lines == other.Lines;
+                && Lines.SequenceEqual(other.Lines);
         }
 
         protected override int GetHashCodeCore()

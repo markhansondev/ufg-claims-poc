@@ -15,7 +15,7 @@ namespace Poc.Claims.Services
         }
 
         public ClaimantDto(Claimant claimant)
-        {
+        {            
             id = claimant.Id;
             name = claimant.Name;
             lines = claimant.Lines.Select(line => new LineDto(line)).ToList();

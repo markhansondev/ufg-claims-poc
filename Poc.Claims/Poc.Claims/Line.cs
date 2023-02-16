@@ -1,6 +1,8 @@
-﻿namespace Poc.Claims
+﻿using CSharpFunctionalExtensions;
+
+namespace Poc.Claims
 {
-    public class Line
+    public class Line : ValueObject<Line>
     {
         public virtual long Id { get; protected set; }
         public virtual decimal ReserveAmount { get; protected set; }
@@ -18,6 +20,17 @@
         public virtual void Close()
         {
             ReserveAmount = 0;
+        }
+
+        protected override bool EqualsCore(Line other)
+        {
+            return ReserveAmount == other.ReserveAmount
+                && Type == other.Type;
+        }
+
+        protected override int GetHashCodeCore()
+        {
+            return (ReserveAmount, Type).GetHashCode();
         }
     }
 }
