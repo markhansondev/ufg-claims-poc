@@ -124,36 +124,6 @@
 				}
 			},
 			"response": []
-		},
-		{
-			"name": "https://localhost:44359/claimants/{{claimant_id}}/lines",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"initial_reserve_amount\": 100,\r\n    \"type\": \"type 1\"\r\n}\r\n",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "https://localhost:44359/claimants/{{claimant_id}}/lines",
-					"protocol": "https",
-					"host": [
-						"localhost"
-					],
-					"port": "44359",
-					"path": [
-						"claimants",
-						"{{claimant_id}}",
-						"lines"
-					]
-				}
-			},
-			"response": []
 		}
 	],
 	"variable": [

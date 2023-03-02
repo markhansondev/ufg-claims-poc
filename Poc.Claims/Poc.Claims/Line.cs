@@ -4,7 +4,7 @@ namespace Poc.Claims
 {
     public class Line : ValueObject<Line>
     {
-        public virtual long Id { get; protected set; }
+        protected virtual long Id { get; set; }
         public virtual decimal ReserveAmount { get; protected set; }
         public virtual string Type { get; protected set; }
         protected Line()

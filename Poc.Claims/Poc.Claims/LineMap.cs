@@ -1,4 +1,5 @@
-﻿using FluentNHibernate.Mapping;
+﻿using FluentNHibernate;
+using FluentNHibernate.Mapping;
 
 namespace Poc.Claims
 {
@@ -6,7 +7,7 @@ namespace Poc.Claims
     {
         public LineMap()
         {
-            Id(x => x.Id);
+            Id(Reveal.Member<Line>("Id"));
             Map(x => x.ReserveAmount);
             Map(x => x.Type);
         }

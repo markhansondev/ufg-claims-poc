@@ -6,8 +6,7 @@ namespace Poc.Claims
 {
     public class Claimant : ValueObject<Claimant>
     {
-        //todo: don't expose Id to the outside
-        public virtual long Id { get; set; }
+        protected virtual long Id { get; set; }
         public virtual string Name { get; set; }
         public virtual IEnumerable<Line> Lines => _lines;
         public virtual decimal TotalReserveAmount => Lines.Sum(line => line.ReserveAmount);

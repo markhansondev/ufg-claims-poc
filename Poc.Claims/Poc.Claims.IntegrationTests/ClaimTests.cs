@@ -43,13 +43,11 @@ namespace Poc.Claims.IntegrationTests
                     {
                         new()
                         {
-                            id = 10,
                             name = "claimant 1",
                             lines = new List<LineDto>
                             {
                                 new()
                                 {
-                                    id = 10,
                                     reserve_amount = 123,
                                     type = "line type 1"
                                 }

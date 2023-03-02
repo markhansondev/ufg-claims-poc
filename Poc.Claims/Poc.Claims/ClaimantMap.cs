@@ -1,4 +1,5 @@
-﻿using FluentNHibernate.Mapping;
+﻿using FluentNHibernate;
+using FluentNHibernate.Mapping;
 
 namespace Poc.Claims
 {
@@ -6,7 +7,7 @@ namespace Poc.Claims
     {
         public ClaimantMap()
         {
-            Id(x => x.Id);
+            Id(Reveal.Member<Claimant>("Id"));
             Map(x => x.Name).Nullable();
 
             HasMany(x => x.Lines)
