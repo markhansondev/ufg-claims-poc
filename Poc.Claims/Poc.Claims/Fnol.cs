@@ -1,6 +1,8 @@
-﻿namespace Poc.Claims
+﻿using Poc.Claims.Common;
+
+namespace Poc.Claims
 {
-    public class Fnol
+    public class Fnol : Aggregate<long>
     {
         public virtual long Id { get; protected set; }
         public virtual bool IsReadyToBeCompleted { get; set; }

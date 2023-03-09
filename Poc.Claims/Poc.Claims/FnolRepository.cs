@@ -2,7 +2,7 @@
 
 namespace Poc.Claims
 {
-    public class FnolRepository : Repository<Fnol>
+    public class FnolRepository : Repository<Fnol, long>
     {
     }
 }

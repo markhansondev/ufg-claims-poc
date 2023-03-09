@@ -8,6 +8,7 @@ namespace Poc.Claims
     public class Claim : Aggregate<long>
     {
         public virtual IEnumerable<Claimant> Claimants => _claimants;
+        //todo: is there a VO here?
         public virtual decimal TotalReserveAmount => Claimants.Sum(claimant => claimant.TotalReserveAmount);
 
         private readonly IList<Claimant> _claimants;

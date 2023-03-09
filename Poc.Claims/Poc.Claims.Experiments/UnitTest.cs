@@ -18,7 +18,7 @@ namespace Poc.Claims.Experiments
             SessionFactory.Init(@"Server=.;Database=ClaimsPocExperiment;Trusted_Connection=true");
         }
 
-        [Fact]
+        [Fact(Skip = "run on demand")]
         public void TestA()
         {
             var class1A = new Class1A();
@@ -30,7 +30,7 @@ namespace Poc.Claims.Experiments
             savedClass1A.Class2As.ElementAt(0).Id.ShouldNotBe(0);
         }
 
-        [Fact]
+        [Fact(Skip = "run on demand")]
         public void TestB()
         {
             var class1B = new Class1B();

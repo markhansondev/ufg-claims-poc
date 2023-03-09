@@ -3,8 +3,8 @@ using Poc.Claims.Utils;
 
 namespace Poc.Claims.Common
 {
-    public abstract class Repository<T>
-        //where T : AggregateRoot
+    public abstract class Repository<T, TU>
+        where T : Aggregate<TU>
     {
         public T GetById(long id)
         {
