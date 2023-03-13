@@ -17,6 +17,7 @@ namespace Poc.Claims
         {
         }
 
+        //TODO: Make non-public
         public Claimant(string name, IEnumerable<Line> lines)
         {
             Name = name;
@@ -36,7 +37,7 @@ namespace Poc.Claims
 
         public virtual Line GetLine(string type)
         {
-            return _lines.Single(line => line.Type.Equals(type));
+            return _lines.Single(line => line.Type == type);
         }
 
         public virtual void CloseLine(string type)

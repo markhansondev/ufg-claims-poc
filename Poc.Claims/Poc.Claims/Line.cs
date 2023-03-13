@@ -11,6 +11,7 @@ namespace Poc.Claims
         {
         }
 
+        //TODO: Make non-public
         public Line(decimal initialReserveAmount, string type)
         {
             Type = type;
