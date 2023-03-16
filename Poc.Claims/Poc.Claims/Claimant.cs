@@ -17,7 +17,6 @@ namespace Poc.Claims
         {
         }
 
-        //TODO: Make non-public
         public Claimant(string name, IEnumerable<Line> lines)
         {
             Name = name;

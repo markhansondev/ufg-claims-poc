@@ -1,12 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Poc.Claims
 {
-    class Payment
+    public class Payment
     {
+        public Payment(decimal amount)
+        {
+            Amount = amount;
+        }
+
+        public decimal Amount { get; set; }
     }
 }
