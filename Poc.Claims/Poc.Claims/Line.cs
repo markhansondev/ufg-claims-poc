@@ -38,11 +38,14 @@ namespace Poc.Claims
 
         public virtual Result MakePayment(decimal amount)
         {
-            //todo: can this be in payment?
-            if (amount < 0)
-                return Result.Failure("A payment amount must positive.");
+            var paymentResult = Payment.Create(amount);
 
-            _payments.Add(new Payment(amount));
+            if (paymentResult.IsFailure)
+            {
+                return paymentResult.ConvertFailure();
+            }
+
+            _payments.Add(paymentResult.Value);
             return Result.Success();
         }
 
