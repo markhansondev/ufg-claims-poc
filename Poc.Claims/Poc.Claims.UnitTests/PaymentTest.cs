@@ -7,7 +7,7 @@ namespace Poc.Claims.UnitTests
     public class PaymentTest
     {
         [Fact]
-        public void Make_payment_on_a_line()
+        public void Make_a_zero_value_payment_on_a_line()
         {
             //Arrange
             var line = CreateClaim()
@@ -19,18 +19,6 @@ namespace Poc.Claims.UnitTests
 
             //Assert
             line.Payments.Count().ShouldBe(1);
-        }
-
-        private static Claim CreateClaim()
-        {
-            return new Fnol()
-                {
-                    ClaimantName = "claimant1",
-                    FnolLineLiabilityAmount = 0,
-                    IsReadyToBeCompleted = true,
-                    LineType = "stressing"
-                }
-                .CreateClaim();
         }
 
         [Fact]
@@ -46,6 +34,18 @@ namespace Poc.Claims.UnitTests
 
             //Assert
             result.IsFailure.ShouldBeTrue();
+        }
+
+        private static Claim CreateClaim()
+        {
+            return new Fnol()
+                {
+                    ClaimantName = "claimant1",
+                    FnolLineLiabilityAmount = 0,
+                    IsReadyToBeCompleted = true,
+                    LineType = "stressing"
+                }
+                .CreateClaim();
         }
     }
 }

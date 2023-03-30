@@ -10,6 +10,10 @@ namespace Poc.Claims
             Id(Reveal.Member<Line>("Id"));
             Map(x => x.ReserveAmount);
             Map(x => x.Type);
+
+            HasMany(x => x.Payments)
+                .Cascade.SaveUpdate()
+                .Not.LazyLoad();
         }
     }
 }

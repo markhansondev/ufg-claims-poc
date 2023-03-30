@@ -1,7 +1,5 @@
 ﻿using CSharpFunctionalExtensions;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Poc.Claims
 {
@@ -30,28 +28,14 @@ namespace Poc.Claims
             ReserveAmount = 0;
         }
 
-        protected override bool EqualsCore(Line other)
-        {
-            return ReserveAmount == other.ReserveAmount
-                && Type == other.Type;
-        }
+        protected override bool EqualsCore(Line other) => 
+            ReserveAmount == other.ReserveAmount
+            && Type == other.Type;
 
-        public virtual Result MakePayment(decimal amount)
-        {
-            var paymentResult = Payment.Create(amount);
+        public virtual Result MakePayment(decimal amount) =>
+            Payment.Create(amount)
+                .Tap(payment => _payments.Add(payment));
 
-            if (paymentResult.IsFailure)
-            {
-                return paymentResult.ConvertFailure();
-            }
-
-            _payments.Add(paymentResult.Value);
-            return Result.Success();
-        }
-
-        protected override int GetHashCodeCore()
-        {
-            return (ReserveAmount, Type).GetHashCode();
-        }
+        protected override int GetHashCodeCore() => (ReserveAmount, Type).GetHashCode();
     }
 }

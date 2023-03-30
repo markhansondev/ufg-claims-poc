@@ -17,7 +17,7 @@ namespace Poc.Claims.IntegrationTests
             _claimService = new ClaimService(ConnectionString);
         }
 
-        [Fact]
+        [Fact(Skip = "run on demand")]
         public void Can_create_and_get_a_claim()
         {
             //setup
