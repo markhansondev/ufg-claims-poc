@@ -6,6 +6,7 @@ namespace Poc.Claims
     public class Line : ValueObject<Line>
     {
         protected virtual long Id { get; set; }
+        public virtual int LineNumber { get; }
         public virtual decimal ReserveAmount { get; protected set; }
         public virtual string Type { get; protected set; }
         public virtual IEnumerable<Payment> Payments => _payments;
@@ -16,10 +17,11 @@ namespace Poc.Claims
         {
         }
 
-        public Line(decimal initialReserveAmount, string type)
-        {
+        public Line(decimal initialReserveAmount, string type, int lineNumber)
+        {            
             Type = type;
             ReserveAmount = initialReserveAmount;
+            LineNumber = lineNumber;
             _payments = new List<Payment>();
         }
 

@@ -15,7 +15,8 @@ namespace Poc.Claims
             return new Claim(
                 new Claimant(
                     ClaimantName,
-                    new[] { new Line(FnolLineLiabilityAmount, LineType) }));
+                    //TODO: Initial line's LineNumber (1) is a magic number
+                    new[] { new Line(FnolLineLiabilityAmount, LineType, 1)}));
         }
     }
 }

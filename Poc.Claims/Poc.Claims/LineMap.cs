@@ -8,6 +8,7 @@ namespace Poc.Claims
         public LineMap()
         {
             Id(Reveal.Member<Line>("Id"));
+            Map(x => x.LineNumber);
             Map(x => x.ReserveAmount);
             Map(x => x.Type);
 

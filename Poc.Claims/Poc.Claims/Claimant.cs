@@ -31,7 +31,12 @@ namespace Poc.Claims
 
         public virtual void AddLine(decimal initialReserveAmount, string type)
         {
-            _lines.Add(new Line(initialReserveAmount, type));
+            _lines.Add(new Line(initialReserveAmount, type, GetLineNumber()));
+        }
+
+        private int GetLineNumber()
+        {
+            return _lines.Count + 1;
         }
 
         public virtual Line GetLine(string type)

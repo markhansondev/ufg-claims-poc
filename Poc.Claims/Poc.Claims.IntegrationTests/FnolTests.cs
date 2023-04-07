@@ -14,7 +14,7 @@ namespace Poc.Claims.IntegrationTests
             _fnolService = new FnolService(ConnectionString);
         }
 
-        [Fact(Skip = "run on demand")]
+        [Fact]// (Skip = "run on demand")]
         public void Can_create_and_get_an_fnol()
         {
             //setup

@@ -61,7 +61,7 @@ namespace Poc.Claims.Specs
             _reserveContext.Claim = new Claim(
                 new Claimant(
                     DefaultClaimantName,
-                    new[] { new Line(DefaultReserveAmount, DefaultLineType) }));
+                    new[] { new Line(DefaultReserveAmount, DefaultLineType, 1)}));
         }
 
         [When(@"a new line is added to the claim with an initial reserve amount of \$(.*)")]
@@ -84,7 +84,7 @@ namespace Poc.Claims.Specs
             _reserveContext.Claim = new Claim(
                 new Claimant(
                     DefaultClaimantName,
-                    new[] { new Line(initialReserveAmount, DefaultLineType) }));
+                    new[] { new Line(initialReserveAmount, DefaultLineType, 1) }));
         }
 
         [Then(@"the total reserve amount is set to \$(.*) on the new claim")]
@@ -102,7 +102,8 @@ namespace Poc.Claims.Specs
                     table.Rows.Select(
                         row => new Line(
                             decimal.Parse(row["reserve amount"]),
-                            row["line type"])
+                            row["line type"], 
+                            1)                        
                         )
                     )
                 );
