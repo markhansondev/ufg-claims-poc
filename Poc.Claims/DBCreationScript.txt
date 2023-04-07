@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [ClaimsPoc]    Script Date: 3/30/2023 5:35:34 PM ******/
+/****** Object:  Database [ClaimsPoc]    Script Date: 4/7/2023 1:05:15 PM ******/
 CREATE DATABASE [ClaimsPoc]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -82,7 +82,7 @@ ALTER DATABASE [ClaimsPoc] SET QUERY_STORE = OFF
 GO
 USE [ClaimsPoc]
 GO
-/****** Object:  Table [dbo].[Claim]    Script Date: 3/30/2023 5:35:34 PM ******/
+/****** Object:  Table [dbo].[Claim]    Script Date: 4/7/2023 1:05:16 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -95,7 +95,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Claimant]    Script Date: 3/30/2023 5:35:34 PM ******/
+/****** Object:  Table [dbo].[Claimant]    Script Date: 4/7/2023 1:05:16 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -110,7 +110,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Fnol]    Script Date: 3/30/2023 5:35:34 PM ******/
+/****** Object:  Table [dbo].[Fnol]    Script Date: 4/7/2023 1:05:16 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -127,7 +127,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Ids]    Script Date: 3/30/2023 5:35:34 PM ******/
+/****** Object:  Table [dbo].[Ids]    Script Date: 4/7/2023 1:05:16 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -141,13 +141,14 @@ CREATE TABLE [dbo].[Ids](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Line]    Script Date: 3/30/2023 5:35:34 PM ******/
+/****** Object:  Table [dbo].[Line]    Script Date: 4/7/2023 1:05:16 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Line](
 	[LineID] [bigint] NOT NULL,
+	[LineNumber] [int] NOT NULL,
 	[ReserveAmount] [decimal](19, 5) NOT NULL,
 	[Type] [nvarchar](255) NOT NULL,
 	[ClaimantID] [bigint] NULL,
@@ -157,7 +158,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Payment]    Script Date: 3/30/2023 5:35:34 PM ******/
+/****** Object:  Table [dbo].[Payment]    Script Date: 4/7/2023 1:05:16 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
