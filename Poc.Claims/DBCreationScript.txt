@@ -1,5 +1,13 @@
 USE [master]
 GO
+
+IF EXISTS (SELECT name from sys.databases WHERE (name = 'ClaimsPoc'))
+BEGIN
+	alter database [ClaimsPoc] set single_user with rollback immediate;
+	DROP DATABASE [ClaimsPoc];
+END;
+GO
+
 /****** Object:  Database [ClaimsPoc]    Script Date: 4/7/2023 1:05:15 PM ******/
 CREATE DATABASE [ClaimsPoc]
  CONTAINMENT = NONE

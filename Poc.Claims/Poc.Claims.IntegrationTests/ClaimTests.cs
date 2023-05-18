@@ -49,7 +49,8 @@ namespace Poc.Claims.IntegrationTests
                                 new()
                                 {
                                     reserve_amount = 123,
-                                    type = "line type 1"
+                                    type = "line type 1",
+                                    line_number = 1
                                 }
                             }
                         }

@@ -30,5 +30,12 @@ namespace Poc.Claims.Api.Controllers
             var claimDto = _claimService.AddClaimant(id, claimantDto);
             return CreatedAtAction(nameof(Get), new { id = claimDto.id }, claimDto);
         }
+
+        //[HttpPost("{id}/claimants/{claimantId}/lines")]
+        //public ActionResult<ClaimDto> AddLine(long id, long claimantId, AddLineDto lineDto)
+        //{
+        //    var claimDto = _claimService.AddLineToClaimant(id, lineDto);
+        //    return CreatedAtAction(nameof(Get), new { id = claimDto.id }, claimDto);
+        //}
     }
 }

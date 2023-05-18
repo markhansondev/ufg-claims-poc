@@ -32,7 +32,8 @@ namespace Poc.Claims
 
         protected override bool EqualsCore(Line other) => 
             ReserveAmount == other.ReserveAmount
-            && Type == other.Type;
+            && Type == other.Type
+            && LineNumber == other.LineNumber;
 
         public virtual Result MakePayment(decimal amount) =>
             Payment.Create(amount)

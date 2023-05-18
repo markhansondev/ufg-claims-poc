@@ -5,6 +5,7 @@ namespace Poc.Claims.Services
     {
         public decimal reserve_amount { get; set; }
         public string type { get; set; }
+        public int line_number { get; set; }
 
         public LineDto()
         {
@@ -14,6 +15,7 @@ namespace Poc.Claims.Services
         {
             reserve_amount = line.ReserveAmount;
             type = line.Type;
+            line_number = line.LineNumber;
         }
     }
 }
